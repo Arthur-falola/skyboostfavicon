@@ -1,0 +1,152 @@
+<?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header("Location: connexion.html");
+    exit;
+}
+?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkyBoost - Boost des réseaux sociaux</title>
+    <link rel="stylesheet" href="css/style1.css">
+</head>
+<body>
+    <div id="preloader">
+        
+        <div id="barre">
+            <h1 id="skyboost">SkyBoost</h1>
+            <div id="progress-bar"></div>
+            
+        </div>
+    </div>
+    <div id="content" style="display: none;">
+        <!-- Votre contenu principal ici -->
+    
+    <header>
+    <div class="logo">
+        <h1>SkyBoost</h1>
+        <p>Boostez votre présence sur les réseaux sociaux</p>
+    </div>
+    <div class="user-info" style="text-align: right; margin: 10px;">
+        <?php if (isset($_SESSION['username'])): ?>
+            <p style="font-weight: bold;">Bienvenue, <?php echo htmlspecialchars($_SESSION['username']); ?> !</p>
+        <?php endif; ?>
+    </div>
+</header>
+    
+    <nav id="nav-men">
+        <!-- Les liens seront affichés dynamiquement via JavaScript -->
+        <a href="index.php" class="nav-link">Accueil</a>
+                    <a href="mes_commandes.php" class="nav-link">Mes commandes</a>
+        <a href="invite.php" class="nav-link">invitez des ami(e)s</a>
+        <a href="boostage_gratuit.html" class="nav-link">boost gratuit</a>
+                    <a href="apropos.html" class="nav-link">À propos</a>
+                    <a href="php/deconnexion.php" class="nav-link">Déconnexion</a>
+    </nav>
+
+    <div class="container">
+        <h2>Nos services exclusifs pour propulser votre succès</h2>
+        <p>Choisissez un réseau social et découvrez nos options de boost personnalisées. Profitez de notre expertise pour augmenter votre visibilité.</p>
+
+        <div class="service">
+            <h3><img class="icone" src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="tiktok" >Instagram</h3>
+            <p>Boostez votre compte Instagram rapidement avec des likes, des abonnés et des commentaires authentiques. Tout pour faire grandir votre communauté !</p>
+            <button onclick="toggleOptions('instagram')" class="btn">Voir Options</button>
+            <div id="instagram" class="options" style="display: none;">
+                <button onclick="location.href='commandez.html?network=instagram&option=1000likes'" class="option-btn">1000 Likes sur une publication<span class="montant">1500f</span></button>
+                <button onclick="location.href='commandez.html?network=instagram&option=1000followers'" class="option-btn">1000 Abonnés sur votre page <span class="montant">1500f</span></button>
+                <button onclick="location.href='commandez.html?network=instagram&option=comments'" class="option-btn">Commentaires <span class="montant">1500f</span></button>
+            </div>
+        </div>
+
+        <div class="service">
+            <h3><img class="icone" src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"alt="facebook" >Facebook</h3>
+            <p>Augmentez votre influence sur Facebook avec des likes et des abonnés qualifiés. Attirez plus d'interactions et de visibilité.</p>
+            <button onclick="toggleOptions('facebook')" class="btn">Voir Options</button>
+            <div id="facebook" class="options" style="display: none;">
+                <button onclick="location.href='commandez.html?network=facebook&option=likes'" class="option-btn">1000 Likes sur votre publication <span class="montant">1500f</span></button>
+                <button onclick="location.href='commandez.html?network=facebook&option=followers'" class="option-btn">Followers<span class="montant">1500f</span></button>
+            </div>
+        </div>
+
+        <div class="service">
+            <h3><img class="icone" src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="youtube" >YouTube</h3>
+            <p>Faites décoller votre chaîne YouTube avec des vues et des abonnés. Notre service vous aide à atteindre vos objectifs rapidement.</p>
+            <button onclick="toggleOptions('youtube')" class="btn">Voir Options</button>
+            <div id="youtube" class="options" style="display: none;">
+                <button onclick="location.href='commandez.html?network=youtube&option=views'" class="option-btn">Views <span class="montant">1500f</span></button>
+                <button onclick="location.href='commandez.html?network=youtube&option=subscribers'" class="option-btn">Subscribers<span class="montant">1500f</span></button>
+            </div>
+        </div>
+        <div class="service">
+            <h3><img class="icone" src="https://www.svgrepo.com/show/327400/logo-tiktok.svg" alt="tiktok" >Tiktok</h3>
+            <p>Boostez votre compte Tiktok rapidement avec des likes, des abonnés et des commentaires authentiques. Tout pour faire grandir votre communauté !</p>
+            <button onclick="toggleOptions('tiktok')" class="btn">Voir Options</button>
+            <div id="tiktok" class="options" style="display: none;">
+                <button onclick="location.href='commandez.html?network=tiktok&option=1000likes'" class="option-btn">1000 Likes sur une publication<span class="montant">1500f</span></button>
+                <button onclick="location.href='commandez.html?network=tiktok&option=1000followers'" class="option-btn">1000 Abonnés sur votre page <span class="montant">1500f</span></button>
+                <button onclick="location.href='commandez.html?network=tiktok&option=comments'" class="option-btn">Commentaires <span class="montant">1500f</span></button>
+            </div>
+        </div>
+
+        <div class="cta">
+            <h2>Prêt à booster vos réseaux sociaux ?</h2>
+            <p>Rejoignez-nous dès maintenant et commencez à voir les résultats !</p>
+            <a href="inscription.html" class="btn cta-btn">S'inscrire</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 SkyBoost - Tous droits réservés.</p>
+    </footer>
+    </div>
+    <script>
+/*function toggleOptions(service) {
+   // Récupérer l'élément contenant les options
+    var options = document.getElementById(service);
+
+    // Vérifier si les options sont déjà visibles
+    if (options.style.display === "none" || options.style.display === "") {
+        // Si les options sont cachées, les afficher
+        options.style.display = "block";
+    } else {
+        // Si elles sont déjà affichées, les cacher
+        options.style.display = "none";
+    }
+}*/
+    function toggleOptions(service) {
+    var options = document.getElementById(service);
+    if (options.style.display === "none" || options.style.display === "") {
+        options.style.display = "flex";
+        options.style.opacity = 0;
+        setTimeout(() => options.style.opacity = 1, 100);
+    } else {
+        options.style.opacity = 0;
+        setTimeout(() => options.style.display = "none", 300);
+    }
+}
+    
+    document.addEventListener("DOMContentLoaded", function() {
+    let progressBar = document.getElementById('progress-bar');
+    let content = document.getElementById('content');
+    let width = 0;
+
+    let interval = setInterval(function() {
+        if (width >= 100) {
+            clearInterval(interval);
+            document.getElementById('preloader').style.display = 'none';
+            content.style.display = 'block';
+        } else {
+            width += 1; // Augmentez ou diminuez cette valeur pour ajuster la vitesse de progression
+            progressBar.style.width = width + '%';
+        }
+    }, 50); // Ajustez cet intervalle pour contrôler la vitesse de la barre de progression
+});
+
+    </script>
+    
+</body>
+</html>
